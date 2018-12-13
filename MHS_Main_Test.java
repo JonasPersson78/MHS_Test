@@ -2,7 +2,7 @@ public class MHS_Main_Test {
 
   MHS_Main mhsMain = new MHS_Main();
 
-  // Test MHS_Main.checkPayment with non existing bank, Try with none existig 4 first digits. FAILED/FALSE and empty String. 
+  // Test MHS_Main.checkPayment with non existing bank, Try with none existig 4 first digits. FAILED/FALSE and empty String.
 
 
   // Test MHS_Main.checkPayment() with non existing account
@@ -19,6 +19,11 @@ public class MHS_Main_Test {
   }
 
   // Test MHS_Main.checkPayment() with existing account with too much money. PASS/TRUE OBS! Corret name of Bank.
+  public boolean testCheckPaymentWithExistingAccount_tooMuchMoney() {
+
+    Payment payment = mhsMain.checkPayment("1234912345", 5000);
+    return (payment.nameOfBank.equals("") && payment.isValid == true);
+  }
 
   // Test MHS_Main.checkPayment() with existing account with equal of money PASS/TRUE OBS! Corret name of Bank.
 
@@ -38,6 +43,12 @@ public class MHS_Main_Test {
       System.out.println("PASSED: " + "testCheckPaymentWithNonExistingAccount()");
     } else {
       System.out.println("FAILED: " + "testCheckPaymentWithNonExistingAccount()");
+    }
+
+    if(test.testCheckPaymentWithExistingAccount_tooMuchMoney()) {
+    System.out.println("FAILED:  "+ "testCheckPaymentWithExistingAccount_tooMuchMoney");
+    } else {
+    System.out.println("PASSED:  "+ "testCheckPaymentWithExistingAccount_tooMuchMoney");
     }
   }
 }
