@@ -96,81 +96,103 @@ public class MHS_Main_Test {
   public static void main (String[] args) {
     MHS_Main_Test test = new MHS_Main_Test();
 
+  int totalAmountOfErrors = 0;
+
     System.out.println("\n");
     if(!test.testCheckPaymentWithNonExistingBank()){
       System.out.println("FAILED: " + "testCheckPaymentWithNonExistingBank()");
+        totalAmountOfErrors++;
     }
+
+
 
     if(!test.testCheckPaymentWithInvalidAccountNumber("1234")){
       System.out.println("FAILED: " +
       "test.testCheckPaymentWithInvalidAccountNumber(\"1234\")");
+        totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithInvalidAccountNumber("1423")){
       System.out.println("FAILED: " +
       "test.testCheckPaymentWithInvalidAccountNumber(\"1423\")");
+        totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithInvalidAccountNumber("5531")){
       System.out.println("FAILED: " +
       "test.testCheckPaymentWithInvalidAccountNumber(\"5531\")");
+        totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithInvalidAccountNumber("9951")){
       System.out.println("FAILED: " +
       "test.testCheckPaymentWithInvalidAccountNumber(\"9951\")");
+        totalAmountOfErrors++;
     }
 
     if(!test.testCheckPaymentWithNonExistingAccount("1234111111")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithNonExistingAccount(\"1234111111\")");
+        totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithNonExistingAccount("1423111111")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithNonExistingAccount(\"1423111111\")");
+        totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithNonExistingAccount("5531111111")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithNonExistingAccount(\"5531111111\")");
+        totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithNonExistingAccount("9951111111")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithNonExistingAccount(\"9951111111\")");
+        totalAmountOfErrors++;
     }
 
     if(!test.testCheckPaymentWithNonExistingAccountZeroWithdrawal("1234111111")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithNonExistingAccountZeroWithdrawal(\"1234111111\")");
+        totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithNonExistingAccountZeroWithdrawal("1423111111")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithNonExistingAccountZeroWithdrawal(\"1423111111\")");
+        totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithNonExistingAccountZeroWithdrawal("5531111111")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithNonExistingAccountZeroWithdrawal(\"5531111111\")");
+        totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithNonExistingAccountZeroWithdrawal("9951111111")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithNonExistingAccountZeroWithdrawal(\"9951111111\")");
+        totalAmountOfErrors++;
     }
 
     if(!test.testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.nordea,
                                                                "1234789123")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.nordea, \"1234789123\")");
+      totalAmountOfErrors++;
+
     }
     if(!test.testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.handelsbanken,
                                                                "1423012345")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.nordea, \"1423012345\")");
+      totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.seb,
                                                                "5531223445")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.seb, \"5531223445\")");
+      totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.swedbank,
                                                                "9951618539")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.swedbank, \"9951618539\")");
+      totalAmountOfErrors++;
     }
 
     if(!test.testCheckPaymentWithExistingAccountAndEnoughMoneyBorderline(mhsMain.nordea,
@@ -178,24 +200,29 @@ public class MHS_Main_Test {
                                                                          "1234789123")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountAndEnoughMoneyBorderline(mhsMain.nordea,\"Nordea\", \"1234789123\")");
+      totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithExistingAccountAndEnoughMoneyBorderline(mhsMain.handelsbanken,
                                                                          "Handelsbanken",
                                                                          "1423012345")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountAndEnoughMoneyBorderline(mhsMain.handelsbanken,\"Handelsbanken\", \"1423012345\")");
+      totalAmountOfErrors++;
     }
+
     if(!test.testCheckPaymentWithExistingAccountAndEnoughMoneyBorderline(mhsMain.seb,
                                                                          "SEB",
                                                                          "5531223445")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountAndEnoughMoneyBorderline(mhsMain.seb,\"SEB\", \"5531223445\")");
+      totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithExistingAccountAndEnoughMoneyBorderline(mhsMain.swedbank,
                                                                          "Swedbank",
                                                                          "9951618539")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountAndEnoughMoneyBorderline(mhsMain.swedbank,\"Swedbank\", \"9951618539\")");
+      totalAmountOfErrors++;
     }
 
     if(!test.testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.nordea,
@@ -203,24 +230,28 @@ public class MHS_Main_Test {
                                                                          "1234789123")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.nordea,\"Nordea\", \"1234789123\")");
+      totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.handelsbanken,
                                                                          "Handelsbanken",
                                                                          "1423012345")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.handelsbanken,\"Handelsbanken\", \"1423012345\")");
+      totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.seb,
                                                                          "SEB",
                                                                          "5531223445")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.seb,\"SEB\", \"5531223445\")");
+      totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.swedbank,
                                                                          "Swedbank",
                                                                          "9951618539")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.swedbank,\"Swedbank\", \"9951618539\")");
+      totalAmountOfErrors++;
     }
 
     if(!test.testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.nordea,
@@ -228,24 +259,38 @@ public class MHS_Main_Test {
                                                                          "1234789123")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.nordea,\"Nordea\", \"1234789123\")");
+      totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.handelsbanken,
                                                                          "Handelsbanken",
                                                                          "1423012345")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.handelsbanken,\"Handelsbanken\", \"1423012345\")");
+      totalAmountOfErrors++;
     }
     if(!test.testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.seb,
                                                                          "SEB",
                                                                          "5531223445")){
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.seb,\"SEB\", \"5531223445\")");
+      totalAmountOfErrors++;
+
     }
     if(!test.testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.swedbank,
                                                                          "Swedbank",
                                                                          "9951618539")){
+
       System.out.println("FAILED: " +
       "testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.swedbank,\"Swedbank\", \"9951618539\")");
+      totalAmountOfErrors++;
+
+    }
+
+if (totalAmountOfErrors == 0) {
+  System.out.println("ALL PASSED");
+
+}
+
     }
 
     /* old way
@@ -267,4 +312,3 @@ public class MHS_Main_Test {
     System.out.println("PASSED:  "+ "testCheckPaymentWithExistingAccount_tooMuchMoney");
   }*/
   }
-}
