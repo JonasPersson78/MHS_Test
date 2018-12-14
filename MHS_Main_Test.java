@@ -1,6 +1,6 @@
 public class MHS_Main_Test {
 
-  MHS_Main mhsMain = new MHS_Main();
+  static MHS_Main mhsMain = new MHS_Main();
 
   // Test MHS_Main.checkPayment with non existing bank
   public boolean testCheckPaymentWithNonExistingBank() {
@@ -23,6 +23,14 @@ public class MHS_Main_Test {
   // Test MHS_Main.checkPayment() with non existing account and zero price
   public boolean testCheckPaymentWithNonExistingAccountZeroWithdrawal(String accountNumber) {
     Payment payment = mhsMain.checkPayment(accountNumber, 0);
+    return (payment.nameOfBank.equals("") && payment.isValid == false);
+  }
+
+  // Test MHS_Main.checkPayment() with existing account with not enough money
+  public boolean testCheckPaymentWithExistingAccountNotEnoughMoney(MHS_Bank bank,
+                                                                   String accountNumber) {
+    bank.setBalanceOfAccount(accountNumber, 29);
+    Payment payment = mhsMain.checkPayment(accountNumber, 30);
     return (payment.nameOfBank.equals("") && payment.isValid == false);
   }
 
@@ -100,6 +108,23 @@ public class MHS_Main_Test {
     if(!test.testCheckPaymentWithNonExistingAccountZeroWithdrawal("9951111111")){
       System.out.println("FAILED: " + "testCheckPaymentWithNonExistingAccountZeroWithdrawal(\"9951111111\")");
     }
+
+    if(!test.testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.nordea, "1234789123")){
+      System.out.println("FAILED: " + "testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.nordea, \"1234789123\")");
+    }
+    if(!test.testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.handelsbanken, "1423012345")){
+      System.out.println("FAILED: " + "testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.nordea, \"1423012345\")");
+    }
+    if(!test.testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.seb, "5531223445")){
+      System.out.println("FAILED: " + "testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.seb, \"5531223445\")");
+    }
+    if(!test.testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.swedbank, "9951618539")){
+      System.out.println("FAILED: " + "testCheckPaymentWithExistingAccountNotEnoughMoney(mhsMain.swedbank, \"9951618539\")");
+    }
+
+
+
+
 
 
 
