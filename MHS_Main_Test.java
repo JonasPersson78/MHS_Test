@@ -20,7 +20,11 @@ public class MHS_Main_Test {
     return (payment.nameOfBank.equals("") && payment.isValid == false);
   }
 
-  
+  // Test MHS_Main.checkPayment() with non existing account and zero price
+  public boolean testCheckPaymentWithNonExistingAccountZeroWithdrawal(String accountNumber) {
+    Payment payment = mhsMain.checkPayment(accountNumber, 0);
+    return (payment.nameOfBank.equals("") && payment.isValid == false);
+  }
 
   /* old way
 
@@ -82,6 +86,19 @@ public class MHS_Main_Test {
     }
     if(!test.testCheckPaymentWithNonExistingAccount("9951111111")){
       System.out.println("FAILED: " + "testCheckPaymentWithNonExistingAccount(\"9951111111\")");
+    }
+
+    if(!test.testCheckPaymentWithNonExistingAccountZeroWithdrawal("1234111111")){
+      System.out.println("FAILED: " + "testCheckPaymentWithNonExistingAccountZeroWithdrawal(\"1234111111\")");
+    }
+    if(!test.testCheckPaymentWithNonExistingAccountZeroWithdrawal("1423111111")){
+      System.out.println("FAILED: " + "testCheckPaymentWithNonExistingAccountZeroWithdrawal(\"1423111111\")");
+    }
+    if(!test.testCheckPaymentWithNonExistingAccountZeroWithdrawal("5531111111")){
+      System.out.println("FAILED: " + "testCheckPaymentWithNonExistingAccountZeroWithdrawal(\"5531111111\")");
+    }
+    if(!test.testCheckPaymentWithNonExistingAccountZeroWithdrawal("9951111111")){
+      System.out.println("FAILED: " + "testCheckPaymentWithNonExistingAccountZeroWithdrawal(\"9951111111\")");
     }
 
 
