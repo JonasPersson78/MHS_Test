@@ -2,6 +2,11 @@ public class MHS_Main_Test {
 
   MHS_Main mhsMain = new MHS_Main();
 
+  public boolean testCheckPaymentWithNonExistingBank() {
+    Payment payment = mhsMain.checkPayment("1235111111", 15);
+    return (payment.nameOfBank.equals("") && payment.isValid == false);
+  }
+
   /* old way
 
   // Test MHS_Main.checkPayment with non existing bank, Try with none existig 4 first digits. FAILED/FALSE and empty String.
