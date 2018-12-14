@@ -20,13 +20,13 @@ public class MHS_Main_Test {
     return (payment.nameOfBank.equals("") && payment.isValid == false);
   }
 
-  // Test MHS_Main.checkPayment() with non existing account and zero price
+  // Test MHS_Main.checkPayment() with non existing account and zero withdrawal
   public boolean testCheckPaymentWithNonExistingAccountZeroWithdrawal(String accountNumber) {
     Payment payment = mhsMain.checkPayment(accountNumber, 0);
     return (payment.nameOfBank.equals("") && payment.isValid == false);
   }
 
-  // Test MHS_Main.checkPayment() with existing account with not enough money
+  // Test MHS_Main.checkPayment() with existing account and not enough money
   public boolean testCheckPaymentWithExistingAccountNotEnoughMoney(
                                                   MHS_Bank bank,
                                                   String accountNumber) {
@@ -35,13 +35,33 @@ public class MHS_Main_Test {
     return (payment.nameOfBank.equals("") && payment.isValid == false);
   }
 
-  // Test MHS_Main.checkPayment() with existing account with precisely right amount of money
+  // Test MHS_Main.checkPayment() with existing account and precisely right amount of money
   public boolean testCheckPaymentWithExistingAccountAndEnoughMoneyBorderline(
                                                   MHS_Bank bank,
                                                   String nameOfBank,
                                                   String accountNumber) {
     bank.setBalanceOfAccount(accountNumber, 30);
     Payment payment = mhsMain.checkPayment(accountNumber, 30);
+    return (payment.nameOfBank.equals(nameOfBank) && payment.isValid == true);
+  }
+
+  // Test MHS_Main.checkPayment() with existing account and enough money
+  public boolean testCheckPaymentWithExistingAccountAndEnoughMoney(
+                                                  MHS_Bank bank,
+                                                  String nameOfBank,
+                                                  String accountNumber) {
+    bank.setBalanceOfAccount(accountNumber, 31);
+    Payment payment = mhsMain.checkPayment(accountNumber, 30);
+    return (payment.nameOfBank.equals(nameOfBank) && payment.isValid == true);
+  }
+
+  // Test MHS_Main.checkPayment() with existing account with zero withdrawal and zero balance
+  public boolean testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(
+                                                  MHS_Bank bank,
+                                                  String nameOfBank,
+                                                  String accountNumber) {
+    bank.setBalanceOfAccount(accountNumber, 0);
+    Payment payment = mhsMain.checkPayment(accountNumber, 0);
     return (payment.nameOfBank.equals(nameOfBank) && payment.isValid == true);
   }
 
@@ -178,10 +198,55 @@ public class MHS_Main_Test {
       "testCheckPaymentWithExistingAccountAndEnoughMoneyBorderline(mhsMain.swedbank,\"Swedbank\", \"9951618539\")");
     }
 
+    if(!test.testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.nordea,
+                                                                         "Nordea",
+                                                                         "1234789123")){
+      System.out.println("FAILED: " +
+      "testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.nordea,\"Nordea\", \"1234789123\")");
+    }
+    if(!test.testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.handelsbanken,
+                                                                         "Handelsbanken",
+                                                                         "1423012345")){
+      System.out.println("FAILED: " +
+      "testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.handelsbanken,\"Handelsbanken\", \"1423012345\")");
+    }
+    if(!test.testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.seb,
+                                                                         "SEB",
+                                                                         "5531223445")){
+      System.out.println("FAILED: " +
+      "testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.seb,\"SEB\", \"5531223445\")");
+    }
+    if(!test.testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.swedbank,
+                                                                         "Swedbank",
+                                                                         "9951618539")){
+      System.out.println("FAILED: " +
+      "testCheckPaymentWithExistingAccountAndEnoughMoney(mhsMain.swedbank,\"Swedbank\", \"9951618539\")");
+    }
 
-
-
-
+    if(!test.testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.nordea,
+                                                                         "Nordea",
+                                                                         "1234789123")){
+      System.out.println("FAILED: " +
+      "testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.nordea,\"Nordea\", \"1234789123\")");
+    }
+    if(!test.testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.handelsbanken,
+                                                                         "Handelsbanken",
+                                                                         "1423012345")){
+      System.out.println("FAILED: " +
+      "testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.handelsbanken,\"Handelsbanken\", \"1423012345\")");
+    }
+    if(!test.testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.seb,
+                                                                         "SEB",
+                                                                         "5531223445")){
+      System.out.println("FAILED: " +
+      "testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.seb,\"SEB\", \"5531223445\")");
+    }
+    if(!test.testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.swedbank,
+                                                                         "Swedbank",
+                                                                         "9951618539")){
+      System.out.println("FAILED: " +
+      "testCheckPaymentWithExistingAccountZeroWithdrawalBorderline(mhsMain.swedbank,\"Swedbank\", \"9951618539\")");
+    }
 
     /* old way
     if(test.testCheckPaymentWithExistingAccount_NotEnoughMoney()) {
