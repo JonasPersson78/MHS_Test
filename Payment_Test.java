@@ -18,15 +18,18 @@ public class Payment_Test{
   }
 
     public static void main(String[] args){
-    if(test_StartValueOfNameOfBank()){
-      System.out.println("test_StartValueOfNameOfBank: " + "PASSED");
-    } else {
+    int totalAmountOfErrors = 0;
+    if(!test_StartValueOfNameOfBank()){
       System.out.println("test_StartValueOfNameOfBank: " + "FAILED");
+      totalAmountOfErrors++;
     }
-    if(test_StartValueOfisValid()){
-      System.out.println("test_StartValueOfisValid: " + "PASSED");
-    } else {
+    if(!test_StartValueOfisValid()){
       System.out.println("test_StartValueOfisValid: " + "FAILED");
+      totalAmountOfErrors++;
+    }
+
+    if (totalAmountOfErrors == 0) {
+      System.out.println("\nALL PASSED");
     }
   }
 }
