@@ -141,72 +141,98 @@ public class MHS_Bank_Test {
 
   public static void main(String[] args) {
     MHS_Bank_Test test = new MHS_Bank_Test();
+    int totalAmountOfErrors = 0;
     System.out.println("\nFailed tests MHS_Bank_Test:");
     if(!test.testAddAccountAddsCorrectData()) {
         System.out.println("FAILED: " + "testAddAccountAddsCorrectData()");
+        totalAmountOfErrors++;
     }
     if(!test.testAddAccountAddsCorrectDataMaxAmount()) {
         System.out.println("FAILED: " + "testAddAccountAddsCorrectDataMaxAmount()");
+        totalAmountOfErrors++;
     }
     if(!test.testSetStateEmptyAccountList()) {
         System.out.println("FAILED: " + "testSetStateEmptyAccountList()");
+        totalAmountOfErrors++;
     }
     if(!test.testIndexIsLessThanSizeOfListWithSmallerIndexThanSize()) {
         System.out.println("FAILED: " + "testIndexIsLessThanSizeOfListWithSmallerIndexThanSize()");
+        totalAmountOfErrors++;
     }
     if(!test.testIndexIsLessThanSizeOfListWithSameIndexAsSize()) {
         System.out.println("FAILED: " + "testIndexIsLessThanSizeOfListWithSameIndexAsSize()");
+        totalAmountOfErrors++;
     }
     if(!test.testIndexIsLessThanSizeOfListWithSameIndexAsSizeEmptyList()) {
         System.out.println("FAILED: " + "testIndexIsLessThanSizeOfListWithSameIndexAsSizeEmptyList()");
+        totalAmountOfErrors++;
     }
     if(!test.testIndexIsLessThanSizeOfListWithGreaterIndexThanSize()) {
         System.out.println("FAILED: " + "testIndexIsLessThanSizeOfListWithGreaterIndexThanSize()");
+        totalAmountOfErrors++;
     }
     if(!test.testgetIndexOfAccountNonExistentAccountNonEmptyList()) {
         System.out.println("FAILED: " + "testgetIndexOfAccountNonExistentAccountNonEmptyList()");
+        totalAmountOfErrors++;
     }
     if(!test.testgetIndexOfAccountNonExistentAccountEmptyList()) {
         System.out.println("FAILED: " + "testgetIndexOfAccountNonExistentAccountEmptyList()");
+        totalAmountOfErrors++;
     }
     if(!test.testgetIndexOfAccountExistentAccount()) {
         System.out.println("FAILED: " + "testgetIndexOfAccountExistentAccount()");
+        totalAmountOfErrors++;
     }
     if(!test.testGetBalanceOfIndexExistentIndex()) {
         System.out.println("FAILED: " + "testGetBalanceOfIndexExistantAccount()");
+        totalAmountOfErrors++;
     }
     if(!test.testGetBalanceOfIndexNonExistentIndexNonEmptyList()) {
         System.out.println("FAILED: " + "testGetBalanceOfIndexNonExistentIndexNonEmptyList()");
+        totalAmountOfErrors++;
     }
     if(!test.testGetBalanceOfIndexNonExistentIndexEmptyList()) {
         System.out.println("FAILED: " + "testGetBalanceOfIndexNonExistentIndexEmptyList()");
+        totalAmountOfErrors++;
     }
     if(!test.testSetBalanceOfAccountExistentAccount()) {
         System.out.println("FAILED: " + "testSetBalanceOfAccountExistentAccount()");
+        totalAmountOfErrors++;
     }
     if(!test.testSetBalanceOfAccountExistentAccountMaxAmount()) {
         System.out.println("FAILED: " + "testSetBalanceOfAccountExistentAccountMaxAmount()");
+        totalAmountOfErrors++;
     }
     if(!test.testTryPaymentExistentAccountEnoughMoney()) {
         System.out.println("FAILED: " + "testTryPaymentExistentAccountEnoughMoney()");
+        totalAmountOfErrors++;
     }
     if(!test.testTryPaymentExistentAccountEnoughMoneyBorderline()) {
         System.out.println("FAILED: " + "testTryPaymentExistentAccountEnoughMoneyBorderline()");
+        totalAmountOfErrors++;
     }
     if(!test.testTryPaymentExistentAccountEnoughMoneyBorderLineZeroWithdrawal()) {
         System.out.println("FAILED: " + "testTryPaymentExistentAccountEnoughMoneyBorderLineZeroWithdrawal()");
+        totalAmountOfErrors++;
     }
     if(!test.testTryPaymentExistentAccountEnoughMoneyBorderLineMaxWithdrawal()) {
         System.out.println("FAILED: " + "testTryPaymentExistentAccountEnoughMoneyBorderLineMaxWithdrawal()");
+        totalAmountOfErrors++;
     }
     if(!test.testTryPaymentExistentAccountNotEnoughMoney()) {
         System.out.println("FAILED: " + "testTryPaymentExistentAccountNotEnoughMoney()");
+        totalAmountOfErrors++;
     }
     if(!test.testTryPaymentNonExistentAccountNonEmptyList()) {
         System.out.println("FAILED: " + "testTryPaymentNonExistentAccountNonEmptyList()");
+        totalAmountOfErrors++;
     }
     if(!test.testTryPaymentNonExistentAccountEmptyList()) {
         System.out.println("FAILED: " + "testTryPaymentNonExistentAccountEmptyList()");
+        totalAmountOfErrors++;
+    }
+    if (totalAmountOfErrors == 0) {
+      System.out.println("ALL PASSED");
     }
   }
 }
