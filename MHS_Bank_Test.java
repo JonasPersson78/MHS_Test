@@ -1,12 +1,18 @@
-public class MHS_Bank_Test.java {
+public class MHS_Bank_Test {
   MHS_Bank mhsBank = new MHS_Bank();
 
-  // addAccount
   public boolean testAddAccountAddsCorrectData() {
     mhsBank.setStateEmptyAccountList();
     mhsBank.addAccount("1234567890", 100);
     return (mhsBank.accountList.get(0).accountNumber == "1234567890" &&
            mhsBank.accountList.get(0).balance == 100);
+  }
+
+  public boolean testSetStateEmptyAccountList(){
+    mhsBank.addAccount("1234567890", 100);
+    mhsBank.addAccount("1234567891", 150);
+    mhsBank.setStateEmptyAccountList();
+    return mhsBank.accountList.size() == 0;
   }
 
   public boolean testIndexIsLessThanSizeOfListWithSmallerIndexThanSize(){
@@ -73,28 +79,46 @@ public class MHS_Bank_Test.java {
     return mhsBank.accountList.get(0).balance == 150;
   }
 
+  public boolean testSetBalanceOfAccountExistentAccountMaxAmount(){
+    mhsBank.setStateEmptyAccountList();
+    mhsBank.addAccount("1234567890", 100);
+    mhsBank.setBalanceOfAccount("1234567890", 900000);
+    return mhsBank.accountList.get(0).balance == 900000;
+  }
+
   public boolean testTryPaymentExistentAccountEnoughMoney(){
     mhsBank.setStateEmptyAccountList();
     mhsBank.addAccount("1234567890", 100);
-    return mhsBank.tryPayment("1234567890", 99);
+    return mhsBank.tryPayment("1234567890", 99)
+           && mhsBank.accountList.get(0).balance == 1;
   }
 
   public boolean testTryPaymentExistentAccountEnoughMoneyBorderline(){
     mhsBank.setStateEmptyAccountList();
     mhsBank.addAccount("1234567890", 100);
-    return mhsBank.tryPayment("1234567890", 100);
+    return mhsBank.tryPayment("1234567890", 100)
+           && mhsBank.accountList.get(0).balance == 0;
   }
 
-  public boolean testTryPaymentExistentAccountEnoughMoneyBorderLineNoPrize(){
+  public boolean testTryPaymentExistentAccountEnoughMoneyBorderLineZeroWithdrawal(){
     mhsBank.setStateEmptyAccountList();
     mhsBank.addAccount("1234567890", 0);
-    return mhsBank.tryPayment("1234567890", 0);
+    return mhsBank.tryPayment("1234567890", 0)
+           && mhsBank.accountList.get(0).balance == 0;
+  }
+
+  public boolean testTryPaymentExistentAccountEnoughMoneyBorderLineMaxWithdrawal(){
+    mhsBank.setStateEmptyAccountList();
+    mhsBank.addAccount("1234567890", 900000);
+    return mhsBank.tryPayment("1234567890", 900000)
+           && mhsBank.accountList.get(0).balance == 0;
   }
 
   public boolean testTryPaymentExistentAccountNotEnoughMoney(){
     mhsBank.setStateEmptyAccountList();
     mhsBank.addAccount("1234567890", 100);
-    return !mhsBank.tryPayment("1234567890", 101);
+    return !mhsBank.tryPayment("1234567890", 101)
+           && mhsBank.accountList.get(0).balance == 100;
   }
 
   public boolean testTryPaymentNonExistentAccountNonEmptyList(){
@@ -108,13 +132,14 @@ public class MHS_Bank_Test.java {
     return !mhsBank.tryPayment("1234567891", 0);
   }
 
-  // test set empty state
-
   public static void main(String[] args) {
     MHS_Bank_Test test = new MHS_Bank_Test();
     System.out.println("\nFailed tests MHS_Bank_Test:");
     if(!test.testAddAccountAddsCorrectData()) {
         System.out.println("FAILED: " + "testAddAccountAddsCorrectData()");
+    }
+    if(!test.testSetStateEmptyAccountList()) {
+        System.out.println("FAILED: " + "testSetStateEmptyAccountList()");
     }
     if(!test.testIndexIsLessThanSizeOfListWithSmallerIndexThanSize()) {
         System.out.println("FAILED: " + "testIndexIsLessThanSizeOfListWithSmallerIndexThanSize()");
@@ -149,14 +174,20 @@ public class MHS_Bank_Test.java {
     if(!test.testSetBalanceOfAccountExistentAccount()) {
         System.out.println("FAILED: " + "testSetBalanceOfAccountExistentAccount()");
     }
+    if(!test.testSetBalanceOfAccountExistentAccountMaxAmount()) {
+        System.out.println("FAILED: " + "testSetBalanceOfAccountExistentAccountMaxAmount()");
+    }
     if(!test.testTryPaymentExistentAccountEnoughMoney()) {
         System.out.println("FAILED: " + "testTryPaymentExistentAccountEnoughMoney()");
     }
     if(!test.testTryPaymentExistentAccountEnoughMoneyBorderline()) {
         System.out.println("FAILED: " + "testTryPaymentExistentAccountEnoughMoneyBorderline()");
     }
-    if(!test.testTryPaymentExistentAccountEnoughMoneyBorderLineNoPrize()) {
-        System.out.println("FAILED: " + "testTryPaymentExistentAccountEnoughMoneyBorderLineNoPrize()");
+    if(!test.testTryPaymentExistentAccountEnoughMoneyBorderLineZeroWithdrawal()) {
+        System.out.println("FAILED: " + "testTryPaymentExistentAccountEnoughMoneyBorderLineZeroWithdrawal()");
+    }
+    if(!test.testTryPaymentExistentAccountEnoughMoneyBorderLineMaxWithdrawal()) {
+        System.out.println("FAILED: " + "testTryPaymentExistentAccountEnoughMoneyBorderLineMaxWithdrawal()");
     }
     if(!test.testTryPaymentExistentAccountNotEnoughMoney()) {
         System.out.println("FAILED: " + "testTryPaymentExistentAccountNotEnoughMoney()");
