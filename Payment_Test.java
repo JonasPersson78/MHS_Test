@@ -17,7 +17,7 @@ public class Payment_Test{
     return false;
   }
 
-    public static void main(String[] args){
+  public static void main(String[] args){
     int totalAmountOfErrors = 0;
     if(!test_StartValueOfNameOfBank()){
       System.out.println("test_StartValueOfNameOfBank: " + "FAILED");
