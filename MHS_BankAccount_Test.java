@@ -11,12 +11,8 @@ public class MHS_BankAccount_Test {
   }
 
   public static void main (String[] args) {
-
-      int totalAmountOfErrors = 0;
-
+    int totalAmountOfErrors = 0;
     MHS_BankAccount_Test test = new MHS_BankAccount_Test();
-
-
 
     if(!test.testConstructor()){
       System.out.println("FAILED: " + "testConstructor()");
@@ -28,6 +24,6 @@ public class MHS_BankAccount_Test {
     }
     if (totalAmountOfErrors == 0) {
       System.out.println("\nALL PASSED");
+    }
   }
-}
 }
