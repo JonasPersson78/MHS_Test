@@ -1,8 +1,13 @@
 public class MHS_BankAccount_Test {
-  public class MHS_BankAccount_Test {
+
   public boolean testConstructor(){
     MHS_BankAccount mhsBankAccount = new MHS_BankAccount("1234567890", 100);
     return (mhsBankAccount.accountNumber == "1234567890" && mhsBankAccount.balance == 100);
+  }
+
+  public boolean testConstructorMaxAmount(){
+    MHS_BankAccount mhsBankAccount = new MHS_BankAccount("1234567890", 900000);
+    return (mhsBankAccount.accountNumber == "1234567890" && mhsBankAccount.balance == 900000);
   }
 
   public static void main (String[] args) {
@@ -13,6 +18,8 @@ public class MHS_BankAccount_Test {
     if(!test.testConstructor()){
       System.out.println("FAILED: " + "testConstructor()");
     }
+    if(!test.testConstructorMaxAmount()){
+      System.out.println("FAILED: " + "testConstructorMaxAmount()");
+    }
   }
-}
 }
