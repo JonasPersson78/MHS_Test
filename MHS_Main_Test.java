@@ -14,6 +14,12 @@ public class MHS_Main_Test {
     return (payment.nameOfBank.equals("") && payment.isValid == false);
   }
 
+  // Test MHS_Main.checkPayment() with non existing account
+  public boolean testCheckPaymentWithNonExistingAccount(String accountNumber) {
+    Payment payment = mhsMain.checkPayment(accountNumber, 15);
+    return (payment.nameOfBank.equals("") && payment.isValid == false);
+  }
+
   
 
   /* old way
