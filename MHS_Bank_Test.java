@@ -8,6 +8,13 @@ public class MHS_Bank_Test {
            mhsBank.accountList.get(0).balance == 100);
   }
 
+  public boolean testAddAccountAddsCorrectDataMaxAmount() {
+    mhsBank.setStateEmptyAccountList();
+    mhsBank.addAccount("1234567890", 900000);
+    return (mhsBank.accountList.get(0).accountNumber == "1234567890" &&
+           mhsBank.accountList.get(0).balance == 900000);
+  }
+
   public boolean testSetStateEmptyAccountList(){
     mhsBank.addAccount("1234567890", 100);
     mhsBank.addAccount("1234567891", 150);
@@ -137,6 +144,9 @@ public class MHS_Bank_Test {
     System.out.println("\nFailed tests MHS_Bank_Test:");
     if(!test.testAddAccountAddsCorrectData()) {
         System.out.println("FAILED: " + "testAddAccountAddsCorrectData()");
+    }
+    if(!test.testAddAccountAddsCorrectDataMaxAmount()) {
+        System.out.println("FAILED: " + "testAddAccountAddsCorrectDataMaxAmount()");
     }
     if(!test.testSetStateEmptyAccountList()) {
         System.out.println("FAILED: " + "testSetStateEmptyAccountList()");
