@@ -2,10 +2,19 @@ public class MHS_Main_Test {
 
   MHS_Main mhsMain = new MHS_Main();
 
+  // Test MHS_Main.checkPayment with non existing bank
   public boolean testCheckPaymentWithNonExistingBank() {
     Payment payment = mhsMain.checkPayment("1235111111", 15);
     return (payment.nameOfBank.equals("") && payment.isValid == false);
   }
+
+  // Test MHS_Main.checkPayment with invalid accountNumber
+  public boolean testCheckPaymentWithInvalidAccountNumber(String accountNumber) {
+    Payment payment = mhsMain.checkPayment(accountNumber, 15);
+    return (payment.nameOfBank.equals("") && payment.isValid == false);
+  }
+
+  
 
   /* old way
 
@@ -37,6 +46,40 @@ public class MHS_Main_Test {
 
   public static void main (String[] args) {
     MHS_Main_Test test = new MHS_Main_Test();
+
+    System.out.println("\n");
+    if(!test.testCheckPaymentWithNonExistingBank()){
+      System.out.println("FAILED: " + "testCheckPaymentWithNonExistingBank()");
+    }
+
+    if(!test.testCheckPaymentWithInvalidAccountNumber("1234")){
+      System.out.println("FAILED: " + "test.testCheckPaymentWithInvalidAccountNumber(\"1234\")");
+    }
+    if(!test.testCheckPaymentWithInvalidAccountNumber("1423")){
+      System.out.println("FAILED: " + "test.testCheckPaymentWithInvalidAccountNumber(\"1423\")");
+    }
+    if(!test.testCheckPaymentWithInvalidAccountNumber("5531")){
+      System.out.println("FAILED: " + "test.testCheckPaymentWithInvalidAccountNumber(\"5531\")");
+    }
+    if(!test.testCheckPaymentWithInvalidAccountNumber("9951")){
+      System.out.println("FAILED: " + "test.testCheckPaymentWithInvalidAccountNumber(\"9951\")");
+    }
+
+    if(!test.testCheckPaymentWithNonExistingAccount("1234111111")){
+      System.out.println("FAILED: " + "testCheckPaymentWithNonExistingAccount(\"1234111111\")");
+    }
+    if(!test.testCheckPaymentWithNonExistingAccount("1423111111")){
+      System.out.println("FAILED: " + "testCheckPaymentWithNonExistingAccount(\"1423111111\")");
+    }
+    if(!test.testCheckPaymentWithNonExistingAccount("5531111111")){
+      System.out.println("FAILED: " + "testCheckPaymentWithNonExistingAccount(\"5531111111\")");
+    }
+    if(!test.testCheckPaymentWithNonExistingAccount("9951111111")){
+      System.out.println("FAILED: " + "testCheckPaymentWithNonExistingAccount(\"9951111111\")");
+    }
+
+
+
 
     /* old way
     if(test.testCheckPaymentWithExistingAccount_NotEnoughMoney()) {
